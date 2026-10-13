@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Grammar Lab — Topic 1</title>
+<style>
+:root{--ink:#182238;--muted:#61708a;--bg:#f4f7fc;--card:#fff;--blue:#2457d6;--teal:#0d9488;--line:#dfe6f1;--good:#137547;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(125deg,#172554,#2457d6);color:#fff;padding:28px 18px 34px}header .wrap,main{max-width:1100px;margin:auto}header p{max-width:760px;color:#e2eaff;margin-bottom:0}h1{line-height:1.15;margin:8px 0;font-size:clamp(1.8rem,4vw,2.7rem)}h2{margin-top:0;font-size:1.45rem}h3{margin-bottom:6px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:800;color:#c6d5ff}
+main{padding:20px 14px 55px}.layout{display:grid;grid-template-columns: minmax(0,1.05fr) minmax(0,1fr);gap:18px;align-items:start}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #1a2a4a0b;margin-bottom:18px}.pill{display:inline-block;background:#e9efff;color:#2147a6;border-radius:99px;padding:3px 10px;font-size:.8rem;font-weight:750}.muted{color:var(--muted)}.lesson{margin:14px 0;padding:14px;border-radius:12px;background:#f7f9fe;border:1px solid var(--line)}.example{border-left:4px solid var(--teal);padding:8px 12px;background:#effcf9;margin:9px 0;border-radius:0 9px 9px 0}.token{display:inline-block;padding:4px 9px;margin:3px;border-radius:8px;font-weight:750;animation:pop .35s ease both}.subject{background:#dbeafe;color:#1d4ed8}.verb{background:#d1fae5;color:#065f46}.object{background:#ffedd5;color:#9a3412}.other{background:#ede9fe;color:#6d28d9}@keyframes pop{from{opacity:.25;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}button,select,input[type=text]{font:inherit}button{border:0;border-radius:10px;background:var(--blue);color:white;padding:10px 14px;font-weight:750;cursor:pointer}button.secondary{background:#e8edfa;color:#243d78}button:focus,input:focus,select:focus{outline:3px solid #93c5fd;outline-offset:2px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.sentence-stage{min-height:128px;background:#f8faff;border:1px dashed #b9c7e2;border-radius:13px;padding:18px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px;text-align:center}.legend{display:flex;gap:8px;flex-wrap:wrap;font-size:.86rem;margin-top:10px}.legend span{border-radius:8px;padding:3px 8px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.tabs button{background:#e8edfa;color:#243d78}.tabs button.active{background:var(--blue);color:#fff}.quiz-item{border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}.quiz-item p{margin:0 0 10px;font-weight:700}.options{display:grid;gap:7px}.option{background:#f7f9fd;color:var(--ink);border:1px solid #d7dfed;text-align:left;font-weight:500}.option.correct{background:#dcfce7;border-color:#4ade80}.option.wrong{background:#fee2e2;border-color:#f87171}.feedback{font-size:.92rem;margin-top:8px}.score{font-size:1.15rem;font-weight:800}.progress{height:9px;background:#e4eaf4;border-radius:20px;overflow:hidden;margin:10px 0}.progress div{height:100%;width:0;background:linear-gradient(90deg,#0d9488,#2457d6);transition:width .3s}.small{font-size:.9rem}.wordbank{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.wordbank button{background:#edf2ff;color:#203e87}.answerline{min-height:46px;border:2px dashed #c5d0e2;border-radius:10px;padding:7px;margin:10px 0}.answerline span{display:inline-block;margin:3px;padding:3px 8px;background:#dbeafe;border-radius:7px}.footer{text-align:center;color:var(--muted);font-size:.85rem;padding:15px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.card{padding:16px}header{padding-top:22px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">English Grammar Lab · Level 1</div><h1>Topic 1: Basics of English Grammar</h1><p>Learn what grammar is, how words become sentences, and how to spot the subject, verb and object. Explore the animated sentence builder, then practise with 25 interactive exercises.</p></div></header>
+<main>
+<div class="card">
+  <span class="pill">Learning path</span>
+  <h2 style="margin-top:10px">What you will learn</h2>
+  <div class="tabs" id="lessonTabs">
+    <button class="active" data-tab="grammar">1. Grammar</button><button data-tab="units">2. Words, phrases & sentences</button><button data-tab="svo">3. Subject, verb & object</button><button data-tab="forms">4. Sentence types</button>
+  </div>
+  <div id="lessonContent"></div>
+</div>
+<div class="layout">
+<section>
+<div class="card">
+<h2>🎬 Animated sentence builder</h2>
+<p class="muted">Choose a sentence and reveal its parts. Watch how each word has a job.</p>
+<label for="sentenceSelect"><b>Choose an example</b></label><br>
+<select id="sentenceSelect" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;margin:7px 0 12px">
+<option value="0">The cat drinks milk.</option><option value="1">Riya reads a book.</option><option value="2">Birds fly.</option><option value="3">My brother is happy.</option><option value="4">We play cricket.</option><option value="5">The baby sleeps.</option><option value="6">They are students.</option><option value="7">I do not like coffee.</option><option value="8">Are you ready?</option>
+</select>
+<div class="sentence-stage" id="stage" aria-live="polite"></div>
+<div class="legend"><span class="subject">Subject · who/what?</span><span class="verb">Verb · action/state</span><span class="object">Object · receives action</span><span class="other">Other words</span></div>
+<div class="controls"><button id="animateBtn">▶ Animate parts</button><button class="secondary" id="nextBtn">Next example →</button><button class="secondary" id="plainBtn">Show full sentence</button></div>
+<div class="lesson"><b id="sentenceRule">The cat</b><div id="sentenceExplain" class="small">The cat is the subject, drinks is the verb, and milk is the object.</div></div>
+</div>
+<div class="card">
+<h2>🧩 Build a sentence</h2><p class="muted">Tap the words in the correct order to make a sentence.</p>
+<div class="wordbank" id="wordbank"></div><div class="answerline" id="builtAnswer" aria-live="polite">Your sentence will appear here.</div>
+<div class="controls"><button id="checkBuild">Check sentence</button><button class="secondary" id="resetBuild">Reset</button></div><p id="buildFeedback" class="feedback"></p>
+</div>
+</section>
+<section>
+<div class="card">
+<h2>📘 Quick guide</h2>
+<div class="lesson"><h3>What is grammar?</h3>Grammar is the set of rules that helps us put words together correctly.<div class="example">Correct: <b>She likes music.</b><br>Incorrect: <b>She like music.</b></div></div>
+<div class="lesson"><h3>Word, phrase, sentence</h3><b>Word:</b> one unit of language — <i>book</i>.<br><b>Phrase:</b> a group of words that works together but is not a complete sentence — <i>the big book</i>.<br><b>Sentence:</b> a complete thought — <i>The big book fell.</i></div>
+<div class="lesson"><h3>Subject + Verb + Object</h3><p><span class="token subject">Riya</span> <span class="token verb">reads</span> <span class="token object">books</span></p><b>Subject:</b> who/what the sentence is about.<br><b>Verb:</b> the action or state.<br><b>Object:</b> who/what receives the action. Not every sentence needs an object: <i>Birds fly.</i></div>
+<div class="lesson"><h3>Three useful sentence forms</h3><div class="example"><b>Statement:</b> You are ready.</div><div class="example"><b>Question:</b> Are you ready?</div><div class="example"><b>Negative:</b> You are not ready.</div></div>
+</div>
+<div class="card" id="quizCard">
+<h2>✍️ Practice zone: 25 exercises</h2><p>Answer each question, then read the explanation. You can retry the quiz at any time.</p>
+<div class="progress"><div id="progressBar"></div></div><div class="score" id="scoreLabel">Question 1 of 25</div>
+<div id="quiz"></div><div class="controls"><button id="nextQ" disabled>Next question →</button><button class="secondary" id="restartQuiz">Restart quiz</button></div><div id="finalScore" aria-live="polite"></div>
+</div>
+</section>
+</div>
+<div class="footer">Tip: Say each example aloud. Understanding the pattern is more important than memorising definitions.</div>
+</main>
+<script>
+const lessons={
+grammar:`<h2>What is grammar?</h2><p>Grammar is how we arrange words so that our meaning is clear. Think of words as building blocks: grammar tells us how to put them together.</p><div class="example"><b>Correct:</b> I am happy. <br><b>Incorrect:</b> I happy am.</div><p>Grammar helps with speaking, reading, writing and understanding other people. You do not need to know every rule today—start by noticing patterns.</p>`,
+units:`<h2>Words, phrases and sentences</h2><p>A <b>word</b> has meaning: <i>dog</i>, <i>run</i>, <i>blue</i>.</p><p>A <b>phrase</b> is a group of words that acts as a unit, but usually does not express a complete thought by itself: <i>under the table</i>, <i>a very tall building</i>.</p><p>A <b>sentence</b> expresses a complete thought: <i>The dog ran under the table.</i> A written sentence usually starts with a capital letter and ends with punctuation.</p><div class="example">Word: <b>birds</b> → Phrase: <b>the small birds</b> → Sentence: <b>The small birds sing.</b></div>`,
+svo:`<h2>Subject, verb and object</h2><p><b>Subject:</b> who or what the sentence is about. <b>Verb:</b> an action or state. <b>Object:</b> the person or thing affected by the action.</p><div class="example"><span class="token subject">Mina</span> <span class="token verb">kicks</span> <span class="token object">the ball</span>.</div><p>Ask “Who kicks?” → Mina (subject). “What does Mina do?” → kicks (verb). “Kicks what?” → the ball (object).</p><p><b>Important:</b> not every sentence has an object. In “The baby sleeps,” <i>the baby</i> is the subject and <i>sleeps</i> is the verb.</p>`,
+forms:`<h2>Statements, questions and negative sentences</h2><p><b>Statement:</b> gives information — “He is tired.”</p><p><b>Question:</b> asks something — “Is he tired?”</p><p><b>Negative:</b> says something is not true — “He is not tired.”</p><div class="example">With <i>be</i>: She is here → Is she here? → She is not here.</div><div class="example">With most action verbs, use do/does: You like tea → Do you like tea? → You do not like tea.</div><p>Remember: questions usually end with a question mark (?) and statements normally end with a full stop (.).</p>`
+};
+const lessonContent=document.getElementById('lessonContent');
+document.querySelectorAll('#lessonTabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#lessonTabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');lessonContent.innerHTML=lessons[b.dataset.tab]}));lessonContent.innerHTML=lessons.grammar;
+const examples=[
+{words:[['The','other'],['cat','subject'],['drinks','verb'],['milk','object']],plain:'The cat drinks milk.',rule:'Subject + verb + object',ex:'The cat is the subject (who), drinks is the verb (action), and milk is the object (what is drunk).'},
+{words:[['Riya','subject'],['reads','verb'],['a','other'],['book','object']],plain:'Riya reads a book.',rule:'Riya reads a book.',ex:'Riya = subject; reads = verb; a book = object.'},
+{words:[['Birds','subject'],['fly','verb']],plain:'Birds fly.',rule:'A sentence can have no object.',ex:'Birds is the subject and fly is the verb. Fly does not take an object here.'},
+{words:[['My','other'],['brother','subject'],['is','verb'],['happy','other']],plain:'My brother is happy.',rule:'A verb can show a state.',ex:'Is links the subject to a description. Happy is a complement, not an object.'},
+{words:[['We','subject'],['play','verb'],['cricket','object']],plain:'We play cricket.',rule:'We play cricket.',ex:'We = subject; play = verb; cricket = object.'},
+{words:[['The','other'],['baby','subject'],['sleeps','verb']],plain:'The baby sleeps.',rule:'Subject + verb',ex:'The baby is the subject; sleeps is the verb. There is no object.'},
+{words:[['They','subject'],['are','verb'],['students','other']],plain:'They are students.',rule:'A sentence can describe identity.',ex:'They is the subject, are is the linking verb, and students identifies the subject.'},
+{words:[['I','subject'],['do','verb'],['not','other'],['like','verb'],['coffee','object']],plain:'I do not like coffee.',rule:'Negative sentence',ex:'Not makes the meaning negative. “Coffee” is the object of “like”.'},
+{words:[['Are','verb'],['you','subject'],['ready','other']],plain:'Are you ready?',rule:'Question word order changes.',ex:'The verb are comes before the subject you in this yes/no question.'}
+];
+let currentExample=0;
+function renderExample(animated=false){const e=examples[currentExample];const stage=document.getElementById('stage');stage.innerHTML='';e.words.forEach(([w,t],i)=>{let s=document.createElement('span');s.className='token '+t;s.textContent=w;s.style.animationDelay=(animated?i*.22:0)+'s';stage.appendChild(s)});let dot=document.createElement('span');dot.textContent= e.plain.endsWith('?')?'':' .';dot.style.fontWeight='800';stage.appendChild(dot);document.getElementById('sentenceRule').textContent=e.rule;document.getElementById('sentenceExplain').textContent=e.ex}
+document.getElementById('sentenceSelect').addEventListener('change',e=>{currentExample=+e.target.value;renderExample()});document.getElementById('animateBtn').onclick=()=>renderExample(true);document.getElementById('plainBtn').onclick=()=>{document.getElementById('stage').textContent=examples[currentExample].plain;document.getElementById('sentenceRule').textContent='Full sentence';document.getElementById('sentenceExplain').textContent='Read it aloud, then animate the parts to see each word’s job.'};document.getElementById('nextBtn').onclick=()=>{currentExample=(currentExample+1)%examples.length;document.getElementById('sentenceSelect').value=currentExample;renderExample(true)};renderExample();
+const buildWords=['The','girl','eats','an','apple','quickly'];const target=['The','girl','eats','an','apple'];let chosen=[];
+function renderBuild(){const bank=document.getElementById('wordbank');bank.innerHTML='';buildWords.forEach((w,i)=>{let b=document.createElement('button');b.textContent=w;b.disabled=chosen.includes(i);b.onclick=()=>{chosen.push(i);renderBuild()};bank.appendChild(b)});document.getElementById('builtAnswer').innerHTML=chosen.length?chosen.map(i=>'<span>'+buildWords[i]+'</span>').join(''):'Your sentence will appear here.'}
+document.getElementById('checkBuild').onclick=()=>{const ans=chosen.map(i=>buildWords[i]).join(' ');const f=document.getElementById('buildFeedback');if(ans==='The girl eats an apple')f.textContent='Correct! “The girl” = subject, “eats” = verb, “an apple” = object.';else f.textContent='Not quite. Try: The + girl + eats + an + apple. “Quickly” is an extra word you can add at the end.'};document.getElementById('resetBuild').onclick=()=>{chosen=[];document.getElementById('buildFeedback').textContent='';renderBuild()};renderBuild();
+const questions=[
+['What is grammar?', ['Rules for arranging words correctly','A kind of punctuation mark','Only difficult vocabulary'],0,'Grammar helps us arrange words to communicate clearly.'],
+['Which is a complete sentence?', ['Under the bed','The dog barked.','A very happy'],1,'“The dog barked” expresses a complete thought.'],
+['Which is a word, not a phrase or sentence?', ['in the garden','garden','We play in the garden.'],1,'“Garden” is one word.'],
+['Which is a phrase?', ['The little puppy','The puppy slept.','Puppies sleep.'],0,'“The little puppy” is a group of words, but it is not a complete thought.'],
+['Choose the correct sentence.', ['She happy is.','She is happy.','Happy she is the.'],1,'English commonly uses “She is happy.”'],
+['In “Ravi kicks the ball,” what is the subject?', ['kicks','the ball','Ravi'],2,'Ravi is the person doing the action.'],
+['In “Ravi kicks the ball,” what is the verb?', ['Ravi','kicks','ball'],1,'Kicks tells us the action.'],
+['In “Ravi kicks the ball,” what is the object?', ['Ravi','kicks','the ball'],2,'The ball receives the action of kicking.'],
+['Which sentence has no object?', ['She opens the door.','Birds fly.','He reads a book.'],1,'“Birds fly” has a subject and verb but no object.'],
+['Identify the subject: “The children laugh.”', ['The children','laugh','children laugh'],0,'The children are who the sentence is about.'],
+['Identify the verb: “My father cooks dinner.”', ['father','dinner','cooks'],2,'Cooks is the action verb.'],
+['Which is a statement?', ['Where are you?','Please sit down.','I live in Delhi.'],2,'A statement gives information.'],
+['Which is a question?', ['Are you ready?','You are ready.','You are not ready.'],0,'A question asks for information or confirmation.'],
+['Which is a negative sentence?', ['He plays chess.','He does not play chess.','Does he play chess?'],1,'“Does not” makes the sentence negative.'],
+['Choose the correct question.', ['You are okay?','Are you okay?','Are okay you?'],1,'With the verb “are,” put it before the subject in this question.'],
+['Choose the correct negative sentence.', ['I not am tired.','I am not tired.','I no tired.'],1,'Place “not” after the form of “be”: am not.'],
+['Which word is the verb in “Fish swim in water”?', ['Fish','swim','water'],1,'Swim describes the action.'],
+['Which sentence starts with a capital letter and ends correctly?', ['we are friends','We are friends.','we are friends.'],1,'A written sentence normally begins with a capital letter and ends with punctuation.'],
+['In “Mina is kind,” what is “kind”?', ['The subject','The action verb','A description of Mina'],2,'“Kind” describes the subject after the linking verb “is.”'],
+['Which sentence is in the usual English word order?', ['Likes Sam music.','Sam music likes.','Sam likes music.'],2,'Subject + verb + object: Sam + likes + music.'],
+['Choose the best completion: “The baby ____.”', ['sleep','sleeps','sleeping'],1,'“The baby sleeps” is a complete sentence with a matching verb form.'],
+['Which is a complete sentence?', ['Because I was late','When the rain stopped','I went home.'],2,'“I went home” expresses a complete thought on its own.'],
+['What punctuation usually ends a direct question?', ['.','?','!'],1,'Use a question mark after a direct question.'],
+['Which is the subject in “My best friend studies English”?', ['studies','English','My best friend'],2,'The subject is the person the sentence is about.'],
+['Choose the correct sentence.', ['They are students.','They is students.','They am students.'],0,'Use “are” with “they.”']
+];
+let qIndex=0,answers=Array(questions.length).fill(null),locked=Array(questions.length).fill(false);
+function renderQuiz(){const q=questions[qIndex];document.getElementById('scoreLabel').textContent=`Question ${qIndex+1} of ${questions.length}`;document.getElementById('progressBar').style.width=(qIndex/questions.length*100)+'%';const root=document.getElementById('quiz');root.innerHTML='';const box=document.createElement('div');box.className='quiz-item';const p=document.createElement('p');p.textContent=(qIndex+1)+'. '+q[0];box.appendChild(p);const opts=document.createElement('div');opts.className='options';q[1].forEach((o,i)=>{const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+o;b.disabled=locked[qIndex];if(locked[qIndex]&&i===q[2])b.classList.add('correct');if(locked[qIndex]&&answers[qIndex]===i&&i!==q[2])b.classList.add('wrong');b.onclick=()=>{answers[qIndex]=i;locked[qIndex]=true;renderQuiz();};opts.appendChild(b)});box.appendChild(opts);if(locked[qIndex]){const f=document.createElement('div');f.className='feedback';f.innerHTML=(answers[qIndex]===q[2]?'<b style="color:var(--good)">Correct!</b> ':'<b style="color:var(--bad)">Not quite.</b> ')+q[3];box.appendChild(f)}root.appendChild(box);document.getElementById('nextQ').disabled=!locked[qIndex];document.getElementById('nextQ').textContent=qIndex===questions.length-1?'See results':'Next question →';document.getElementById('finalScore').textContent='';}
+document.getElementById('nextQ').onclick=()=>{if(qIndex<questions.length-1){qIndex++;renderQuiz()}else{const score=answers.reduce((n,a,i)=>n+(a===questions[i][2]?1:0),0);document.getElementById('finalScore').innerHTML=`<div class="lesson"><div class="score">Your score: ${score}/${questions.length} (${Math.round(score/questions.length*100)}%)</div>${score>=22?'Excellent work! You have a strong start.':score>=17?'Good job! Review the explanations for any missed questions.':'Keep practising. Review the lesson and try again—you can improve with practice.'}</div>`;document.getElementById('progressBar').style.width='100%';document.getElementById('nextQ').disabled=true;document.getElementById('nextQ').textContent='Quiz completed';}};
+document.getElementById('restartQuiz').onclick=()=>{qIndex=0;answers=Array(questions.length).fill(null);locked=Array(questions.length).fill(false);renderQuiz()};renderQuiz();
+</script>
+</body>
+</html>
